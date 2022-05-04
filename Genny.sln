@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1EFA0C6-DA45-42BF-B6BB-8162F03F1A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genny.Api", "src\Genny.Api\Genny.Api.csproj", "{F51940C6-ACCF-4F1C-A189-550787FFC39B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tst", "tst", "{95D464FA-F534-4430-ABDB-50112BFBE716}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genny.Api.Test", "tst\Genny.Api.Test\Genny.Api.Test.csproj", "{495AB4F0-EEFF-42C0-BF3E-74C47CB13797}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F51940C6-ACCF-4F1C-A189-550787FFC39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F51940C6-ACCF-4F1C-A189-550787FFC39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F51940C6-ACCF-4F1C-A189-550787FFC39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F51940C6-ACCF-4F1C-A189-550787FFC39B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495AB4F0-EEFF-42C0-BF3E-74C47CB13797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495AB4F0-EEFF-42C0-BF3E-74C47CB13797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495AB4F0-EEFF-42C0-BF3E-74C47CB13797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495AB4F0-EEFF-42C0-BF3E-74C47CB13797}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F51940C6-ACCF-4F1C-A189-550787FFC39B} = {A1EFA0C6-DA45-42BF-B6BB-8162F03F1A15}
+		{495AB4F0-EEFF-42C0-BF3E-74C47CB13797} = {95D464FA-F534-4430-ABDB-50112BFBE716}
+	EndGlobalSection
+EndGlobal
