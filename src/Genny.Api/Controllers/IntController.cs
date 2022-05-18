@@ -1,6 +1,6 @@
-namespace Genny.Controllers
+namespace Genny.Api.Controllers
 {
-    using Genny.Services;
+    using Genny.Api.Services;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -12,7 +12,7 @@ namespace Genny.Controllers
     [Route("ints")]
     [ApiController]
     [Produces("application/json")]
-    public class IntController : ControllerBase
+    public sealed class IntController : ControllerBase
     {
         private readonly IGeneratorService generatorService;
 
@@ -36,6 +36,8 @@ namespace Genny.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(OkResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ForbidResult), StatusCodes.Status429TooManyRequests)]
+
         public IActionResult Get(
             [FromQuery][Range(1, 1000)] int numberOfItems = 100,
             [FromQuery][Range(int.MinValue, int.MaxValue)] int floor = int.MinValue,

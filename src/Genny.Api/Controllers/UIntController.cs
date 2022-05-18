@@ -1,23 +1,23 @@
-namespace Genny.Controllers
+namespace Genny.Api.Controllers
 {
-    using Genny.Services;
+    using Genny.Api.Services;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// Int32 Controller
+    /// UInt32 Controller
     /// </summary>
-    [Route("uints")]
+    [Route("uuints")]
     [ApiController]
     [Produces("application/json")]
-    public class UIntController : ControllerBase
+    public sealed class UIntController : ControllerBase
     {
         private readonly IGeneratorService generatorService;
 
         /// <summary>
-        /// Instantiates a Int Controller
+        /// Instantiates a UInt Controller
         /// </summary>
         /// <param name="generatorService"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -27,15 +27,16 @@ namespace Genny.Controllers
         }
 
         /// <summary>
-        /// Generates a list of ints
+        /// Generates a list of uints
         /// </summary>
-        /// <param name="numberOfItems">Number of ints desired</param>
-        /// <param name="floor">Minimum value of ints to be generated</param>
-        /// <param name="ceiling">Maximum value of ints to be generated</param>
-        /// <returns>List of ints</returns>
+        /// <param name="numberOfItems">Number of uints desired</param>
+        /// <param name="floor">Minimum value of uints to be generated</param>
+        /// <param name="ceiling">Maximum value of uints to be generated</param>
+        /// <returns>List of uints</returns>
         [HttpGet]
         [ProducesResponseType(typeof(OkResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ForbidResult), StatusCodes.Status429TooManyRequests)]
         public IActionResult Get(
             [FromQuery][Range(1, 1000)] int numberOfItems = 100,
             [FromQuery][Range(uint.MinValue, uint.MaxValue)] uint floor = uint.MinValue,

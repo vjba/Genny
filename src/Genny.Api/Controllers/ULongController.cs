@@ -1,18 +1,18 @@
-namespace Genny.Controllers
+namespace Genny.Api.Controllers
 {
-    using Genny.Services;
+    using Genny.Api.Services;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// Int32 Controller
+    /// UInt64 Controller
     /// </summary>
     [Route("ulongs")]
     [ApiController]
     [Produces("application/json")]
-    public class ULongController : ControllerBase
+    public sealed class ULongController : ControllerBase
     {
         private readonly IGeneratorService generatorService;
 
@@ -27,15 +27,16 @@ namespace Genny.Controllers
         }
 
         /// <summary>
-        /// Generates a list of ints
+        /// Generates a list of ulongs
         /// </summary>
-        /// <param name="numberOfItems">Number of ints desired</param>
-        /// <param name="floor">Minimum value of ints to be generated</param>
-        /// <param name="ceiling">Maximum value of ints to be generated</param>
-        /// <returns>List of ints</returns>
+        /// <param name="numberOfItems">Number of ulongs desired</param>
+        /// <param name="floor">Minimum value of ulongs to be generated</param>
+        /// <param name="ceiling">Maximum value of ulongs to be generated</param>
+        /// <returns>List of ulongs</returns>
         [HttpGet]
         [ProducesResponseType(typeof(OkResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ForbidResult), StatusCodes.Status429TooManyRequests)]
         public IActionResult Get(
             [FromQuery][Range(1, 1000)] int numberOfItems = 100,
             [FromQuery][Range(ulong.MinValue, ulong.MaxValue)] ulong floor = 0,

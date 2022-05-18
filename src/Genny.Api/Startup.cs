@@ -1,8 +1,8 @@
 using AspNetCoreRateLimit;
-using Genny.Services;
+using Genny.Api.Services;
 using Microsoft.OpenApi.Models;
 
-namespace Genny
+namespace Genny.Api
 {
     public class Startup
     {
@@ -34,14 +34,16 @@ namespace Genny
                 Contact = new OpenApiContact
                 {
                     Name = "vjba",
-                    Url = new Uri("https://github.com/vjba/genny/")
+                    Url = new Uri("https://github.com/vjba/Genny/")
                 },
                 License = new OpenApiLicense
                 {
                     Name = "GPL-3.0 License",
-                    Url = new Uri("https://github.com/vjba/genny/blob/main/LICENSE")
+                    Url = new Uri("https://github.com/vjba/Genny/blob/main/LICENSE")
                 }
             }));
+
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -61,7 +63,12 @@ namespace Genny
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseEndpoints(
+                endpoints =>
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapHealthChecks("/health");
+                });
         }
     }
 }
