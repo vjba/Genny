@@ -1,4 +1,4 @@
-namespace Genny
+namespace Genny.Api
 {
     public class Program
     {

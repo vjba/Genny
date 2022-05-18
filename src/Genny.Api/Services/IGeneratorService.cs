@@ -1,4 +1,4 @@
-namespace Genny.Services
+namespace Genny.Api.Services
 {
     /// <summary>
     /// Interface for Generator Service

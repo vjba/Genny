@@ -1,8 +1,8 @@
-using Genny.Services;
+using Genny.Api.Services;
 using System;
 using Xunit;
 
-namespace Genny.Test
+namespace Genny.Api.Test
 {
     public class GeneratorServiceTests
     {
@@ -11,48 +11,60 @@ namespace Genny.Test
         public GeneratorServiceTests() => systemUnderTest = new GeneratorService();
 
         [Fact]
+        public void IntGenerator_List_IsValid()
+        {
+            var ints = systemUnderTest.Ints(100, int.MinValue, int.MaxValue);
+
+            foreach (var num in ints)
+            {
+                Assert.True(int.TryParse(num.ToString(), out _));
+            }
+        }
+
+        [Fact]
+        public void LongGenerator_List_IsValid()
+        {
+            var longs = systemUnderTest.Longs(100, long.MinValue, long.MaxValue);
+
+            foreach (var num in longs)
+            {
+                Assert.True(long.TryParse(num.ToString(), out _));
+            }
+        }
+
+        [Fact]
+        public void UIntGenerator_List_IsValid()
+        {
+            var uints = systemUnderTest.UInts(100, uint.MinValue, uint.MaxValue);
+
+            foreach (var num in uints)
+            {
+                Assert.True(uint.TryParse(num.ToString(), out _));
+            }
+        }
+
+        [Fact]
+        public void ULongGenerator_List_IsValid()
+        {
+            // arrange
+            var ulongs = systemUnderTest.ULongs(100, ulong.MinValue, ulong.MaxValue);
+
+            foreach (var num in ulongs)
+            {
+                Assert.True(ulong.TryParse(num.ToString(), out _));
+            }
+        }
+
+        [Fact]
         public void UuidGenerator_List_IsValid()
         {
             // arrange
             var uuids = systemUnderTest.Uuids(100);
 
-            var isUuid = true;
-            // act
-            foreach (var uuid in uuids)
+            foreach (var num in uuids)
             {
-                isUuid = Guid.TryParse(uuid.ToString(), out _);
-
-                if (!isUuid)
-                {
-                    break;
-                }
+                Assert.True(Guid.TryParse(num.ToString(), out _));
             }
-
-            // assert
-            Assert.True(isUuid);
-        }
-
-        [Fact]
-        public void IntGenerator_List_IsValid()
-        {
-            // arrange
-            var ints = systemUnderTest.Ints(100, int.MinValue, int.MaxValue);
-
-            // act
-            var isInt = true;
-
-            foreach (var num in ints)
-            {
-                isInt = int.TryParse(num.ToString(), out _);
-
-                if (!isInt)
-                {
-                    break;
-                }
-            }
-
-            // assert
-            Assert.True(isInt);
         }
     }
 }
